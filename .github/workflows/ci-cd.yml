@@ -25,32 +25,26 @@ jobs:
 
       # --- Backend Integration Checks ---
       - name: Install Backend Dependencies
-        run: |
-          cd backend
-          npm ci
+        working-directory: ./backend
+        run: npm install
 
       - name: Generate Prisma Client
-        run: |
-          cd backend
-          npx prisma generate
+        working-directory: ./backend
+        run: npx prisma generate
 
       - name: Run Backend Tests
-        run: |
-          cd backend
-          npm run test
+        working-directory: ./backend
+        run: npm run test
 
       - name: Compile Backend TypeScript
-        run: |
-          cd backend
-          npm run build
+        working-directory: ./backend
+        run: npm run build
 
       # --- Frontend Integration Checks ---
       - name: Install Frontend Dependencies
-        run: |
-          cd frontend
-          npm ci
+        working-directory: ./frontend
+        run: npm install
 
       - name: Compile Frontend assets
-        run: |
-          cd frontend
-          npm run build
+        working-directory: ./frontend
+        run: npm run build
